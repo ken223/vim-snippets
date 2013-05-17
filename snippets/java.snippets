@@ -205,10 +205,11 @@ snippet get
 	}
 ##
 ## Terminate Methods or Loops
-snippet re
-	return
-snippet br
-	break;
+#snippet re
+#	return
+#snippet br
+#	break;
+
 ##
 ## Test Methods
 snippet t
@@ -224,6 +225,36 @@ snippet test
 ## Utils
 snippet Sc
 	Scanner
+
+snippet br
+    try {(BufferedReader reader = new BufferedReader(new FileReader(new File("${1:FileName}")))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+snippet bw
+    try {(BufferedWriter writer = new BufferedWriter(new FileWriter(new File("${1:FileName}")))) {
+        String line = "test";
+        writer.write(line + "\n");
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+snippet brw
+    try (BufferedReader reader = new BufferedReader(new FileReader(new File("${1:InputFileName}")));
+         BufferedWriter writer = new BufferedWriter(new FileWriter(new File("${1:OutputFileName}")))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            writer.write(line + "\n");
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
 ##
 ## Miscellaneous
 snippet action
