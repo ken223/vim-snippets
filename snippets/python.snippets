@@ -182,8 +182,8 @@ snippet li
 snippet csvreader
 	import csv
 
-	filename = "test.txt"
-	csvfile = open(${1:filename},'r')
+	filename = "${1:inputfilename}"
+	csvfile = open(filename,'r')
 	print csvfile
 
 	for row in csv.reader(csvfile):
