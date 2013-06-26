@@ -177,3 +177,22 @@ snippet lc
 	logger.critical(${1:msg})
 snippet li
 	logger.info(${1:msg})
+
+# reader/writer
+snippet csvreader
+    import csv
+    
+    filename = "test.txt"
+    csvfile = open(filename,'r')
+    print csvfile
+    
+    for row in csv.reader(csvfile):
+        # 1行のリスト
+        print row
+        for elem in row:
+            # 行の中の要素
+            print elem,
+        print
+    
+    csvfile.close()
+    print csvfile
