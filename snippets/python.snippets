@@ -183,16 +183,29 @@ snippet csvreader
 	import csv
 
 	filename = "${1:inputfilename}"
-	csvfile = open(filename,'r')
-	print csvfile
+	with open(filename,'r') as csvfile:
+		print csvfile
 
-	for row in csv.reader(csvfile):
-		# 1行のリスト
-		print row
-		for elem in row:
-			# 行の中の要素
-			print elem,
-		print
+		for row in csv.reader(csvfile):
+			# 1行のリスト
+			print row
+			for elem in row:
+				# 行の中の要素
+				print elem,
+			print
 
-	csvfile.close()
-	print csvfile
+		print csvfile
+
+snippet csvwriter
+	import csv
+
+	# data for test
+	data = []
+	for i in range(10000):
+		data.append([1,2,3,4,5,6,7,8,9,10])
+
+	filename = "${1:outputfilename}"
+	with open(filename,'wb') as csvfile:
+		writer = csv.writer(csvfile)
+		for row in data:
+			writer.writerow(row)
